@@ -1,4 +1,4 @@
-package com.avanade.rpg.dto;
+package com.avanade.rpg.dto.characters;
 
 import com.avanade.rpg.enums.CharacterClass;
 import com.avanade.rpg.enums.CharacterType;
