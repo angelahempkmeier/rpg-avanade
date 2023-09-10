@@ -1,7 +1,7 @@
 package com.avanade.rpg.entities.characters.heroes;
 
-import com.avanade.rpg.dto.CharacterRequestDTO;
-import com.avanade.rpg.dto.CharacterResponseDTO;
+import com.avanade.rpg.dto.characters.CharacterRequestDTO;
+import com.avanade.rpg.dto.characters.CharacterResponseDTO;
 import com.avanade.rpg.entities.Character;
 import com.avanade.rpg.enums.CharacterClass;
 import com.avanade.rpg.enums.CharacterType;
@@ -47,6 +47,8 @@ public class Barbarian extends Character {
         return responseDTO;
     }
 
-
-
+    @Override
+    public Integer damage() {
+        return super.damage();
+    }
 }

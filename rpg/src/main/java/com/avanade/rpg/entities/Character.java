@@ -1,12 +1,18 @@
 package com.avanade.rpg.entities;
 
-import com.avanade.rpg.dto.CharacterRequestDTO;
-import com.avanade.rpg.dto.CharacterResponseDTO;
+import com.avanade.rpg.dto.characters.CharacterRequestDTO;
+import com.avanade.rpg.dto.characters.CharacterResponseDTO;
+import com.avanade.rpg.dto.game.AttackResponseDTO;
+import com.avanade.rpg.dto.game.DefenseResponseDTO;
 import com.avanade.rpg.entities.characters.heroes.Warrior;
+import com.avanade.rpg.strategy.CharacterBattle;
+import com.avanade.rpg.utils.RollingDice;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Random;
 
 //TODO sera que preciso que seja uma entidade?
 
@@ -18,7 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "characters")
-public class Character {
+public class Character implements CharacterBattle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -28,10 +34,6 @@ public class Character {
     private Integer agility;
     private Integer diceQuantity;
     private Integer diceFaces;
-
-    public Character(CharacterRequestDTO dto){
-
-    }
 
     public CharacterResponseDTO characterToResponseDTO(CharacterRequestDTO requestDTO){
         return new CharacterResponseDTO(
@@ -60,19 +62,53 @@ public class Character {
         );
     }
 
-    public CharacterResponseDTO characterToResponseDTO(Character character){
-        if(character instanceof Warrior){
-            Warrior warrior = (Warrior) character;
-            warrior.getName();
-        }
-        return new CharacterResponseDTO(
-                this.id,
-                this.health,
-                this.strength,
-                this.defense,
-                this.agility,
-                this.diceQuantity,
-                this.diceFaces
+    public AttackResponseDTO characterToAttackResponse(){
+        return new AttackResponseDTO(
+                this,
+                attack()
         );
+    }
+
+    public DefenseResponseDTO characterToDefenseResponse(){
+        return new DefenseResponseDTO(
+                this,
+                attack()
+        );
+    }
+
+    public Integer rollingDice1d20(){
+        return RollingDice.rollingDice1d20();
+    }
+
+    public Integer rollingDice1d12(){
+        return RollingDice.rollingDice1d12();
+    }
+
+    @Override
+    public Integer attack() {
+        return rollingDice1d12() + this.strength + this.agility;
+    }
+
+    @Override
+    public Integer defense() {
+        return rollingDice1d12() + this.defense + this.agility;
+    }
+
+    @Override
+    public Integer damage() {
+        Random random = new Random();
+        int minRoll = 1;
+        int maxRoll = this.diceFaces;
+
+        int totalDamage = 0;
+
+        for (int i = 0; i < this.diceQuantity; i++) {
+            int diceRoll = random.nextInt(maxRoll - minRoll + 1) + minRoll;
+            totalDamage += diceRoll;
+        }
+
+        totalDamage += this.strength;
+
+        return totalDamage;
     }
 }

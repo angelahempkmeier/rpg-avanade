@@ -1,6 +1,6 @@
 package com.avanade.rpg.entities.characters.heroes;
 
-import com.avanade.rpg.dto.CharacterResponseDTO;
+import com.avanade.rpg.dto.characters.CharacterResponseDTO;
 import com.avanade.rpg.entities.Character;
 import com.avanade.rpg.enums.CharacterClass;
 import com.avanade.rpg.enums.CharacterType;
