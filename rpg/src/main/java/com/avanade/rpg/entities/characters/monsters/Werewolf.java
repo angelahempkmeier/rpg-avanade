@@ -39,4 +39,9 @@ public class Werewolf extends Character {
         );
         return responseDTO;
     }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
 }

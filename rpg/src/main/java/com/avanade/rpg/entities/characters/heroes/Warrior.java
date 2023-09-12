@@ -46,18 +46,8 @@ public class Warrior extends Character {
         return responseDTO;
     }
 
-    //    public CharacterResponseDTO characterResponseDTO(){
-//        return new CharacterResponseDTO(
-//                this.getId(),
-//                this.name,
-//                CharacterType.HERO,
-//                characterClass,
-//                this.getHealth(),
-//                this.getStrength(),
-//                this.getDefense(),
-//                this.getAgility(),
-//                this.getDiceQuantity(),
-//                this.getDiceFaces()
-//        );
-//    }
+    @Override
+    public String getName() {
+        return this.name;
+    }
 }

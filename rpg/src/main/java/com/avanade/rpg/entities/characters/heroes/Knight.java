@@ -41,4 +41,8 @@ public class Knight extends Character {
         );
         return responseDTO;
     }
+    @Override
+    public String getName() {
+        return this.name;
+    }
 }

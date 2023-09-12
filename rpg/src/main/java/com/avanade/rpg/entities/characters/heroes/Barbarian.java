@@ -51,4 +51,9 @@ public class Barbarian extends Character {
     public Integer damage() {
         return super.damage();
     }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
 }

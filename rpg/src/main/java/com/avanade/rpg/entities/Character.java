@@ -28,7 +28,7 @@ public class Character implements CharacterBattle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Integer health;
+    private Integer life;
     private Integer strength;
     private Integer defense;
     private Integer agility;
@@ -41,7 +41,7 @@ public class Character implements CharacterBattle {
                 requestDTO.name(),
                 requestDTO.type(),
                 requestDTO.characterClass(),
-                this.health,
+                this.life,
                 this.strength,
                 this.defense,
                 this.agility,
@@ -53,7 +53,7 @@ public class Character implements CharacterBattle {
     public CharacterResponseDTO characterResponseDTO(){
         return new CharacterResponseDTO(
                 this.id,
-                this.health,
+                this.life,
                 this.strength,
                 this.defense,
                 this.agility,
@@ -110,5 +110,14 @@ public class Character implements CharacterBattle {
         totalDamage += this.strength;
 
         return totalDamage;
+    }
+
+    @Override
+    public Integer updateLife(Integer damage) {
+        return this.life - damage;
+    }
+
+    public String getName(){
+        return "";
     }
 }
