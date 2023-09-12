@@ -10,6 +10,10 @@ import com.avanade.rpg.enums.CharacterClass;
 import com.avanade.rpg.enums.CharacterType;
 import com.avanade.rpg.entities.Character;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 
 public class CharacterFactoryStrategy {
     public static Character createCharacter(String name, CharacterType type, CharacterClass characterClass){
@@ -54,5 +58,4 @@ public class CharacterFactoryStrategy {
             default -> throw new IllegalArgumentException("This monster doesn't exists.");
         }
     }
-
 }
