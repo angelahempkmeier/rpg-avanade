@@ -45,4 +45,12 @@ public class Orc extends Character {
     public String getName() {
         return this.name;
     }
+    @Override
+    public String getType() {
+        return CharacterType.MONSTER.name();
+    }
+    @Override
+    public String getCharClass(){
+        return this.characterClass.name();
+    }
 }

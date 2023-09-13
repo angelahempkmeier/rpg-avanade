@@ -4,13 +4,13 @@ import com.avanade.rpg.dto.characters.CharacterRequestDTO;
 import com.avanade.rpg.dto.characters.CharacterResponseDTO;
 import com.avanade.rpg.dto.game.AttackResponseDTO;
 import com.avanade.rpg.dto.game.DefenseResponseDTO;
+import com.avanade.rpg.dto.history.CharacterHistoryDTO;
 import com.avanade.rpg.entities.characters.heroes.Warrior;
+import com.avanade.rpg.enums.CharacterType;
 import com.avanade.rpg.strategy.CharacterBattle;
 import com.avanade.rpg.utils.RollingDice;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Random;
 
@@ -20,7 +20,8 @@ import java.util.Random;
 //@MappedSuperclass
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "character_type")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "characters")
@@ -62,18 +63,21 @@ public class Character implements CharacterBattle {
         );
     }
 
-    public AttackResponseDTO characterToAttackResponse(){
-        return new AttackResponseDTO(
-                this,
-                attack()
+    public CharacterHistoryDTO toCharacterHistoryDTO(){
+        return new CharacterHistoryDTO(
+                this.id,
+                this.getName(),
+                this.getType(),
+                this.getCharClass()
         );
     }
 
-    public DefenseResponseDTO characterToDefenseResponse(){
-        return new DefenseResponseDTO(
-                this,
-                attack()
-        );
+    public String getType(){
+        return "";
+    }
+
+    public String getCharClass(){
+        return "";
     }
 
     public Integer rollingDice1d20(){

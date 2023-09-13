@@ -45,4 +45,14 @@ public class Knight extends Character {
     public String getName() {
         return this.name;
     }
+
+    @Override
+    public String getType() {
+        return CharacterType.HERO.name();
+    }
+
+    @Override
+    public String getCharClass(){
+        return this.characterClass.name();
+    }
 }
