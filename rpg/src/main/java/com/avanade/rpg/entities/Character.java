@@ -2,19 +2,16 @@ package com.avanade.rpg.entities;
 
 import com.avanade.rpg.dto.characters.CharacterRequestDTO;
 import com.avanade.rpg.dto.characters.CharacterResponseDTO;
-import com.avanade.rpg.dto.game.AttackResponseDTO;
-import com.avanade.rpg.dto.game.DefenseResponseDTO;
 import com.avanade.rpg.dto.history.CharacterHistoryDTO;
-import com.avanade.rpg.entities.characters.heroes.Warrior;
-import com.avanade.rpg.enums.CharacterType;
 import com.avanade.rpg.strategy.CharacterBattle;
 import com.avanade.rpg.utils.RollingDice;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Random;
-
-//TODO sera que preciso que seja uma entidade?
 
 @Entity
 //@MappedSuperclass
@@ -35,6 +32,7 @@ public class Character implements CharacterBattle {
     private Integer agility;
     private Integer diceQuantity;
     private Integer diceFaces;
+    private Integer initialLife;
 
     public CharacterResponseDTO characterToResponseDTO(CharacterRequestDTO requestDTO){
         return new CharacterResponseDTO(
@@ -112,7 +110,6 @@ public class Character implements CharacterBattle {
         }
 
         totalDamage += this.strength;
-
         return totalDamage;
     }
 
@@ -122,6 +119,9 @@ public class Character implements CharacterBattle {
     }
 
     public String getName(){
-        return "";
+        return "Character";
+    }
+
+    public void setName(String name){
     }
 }

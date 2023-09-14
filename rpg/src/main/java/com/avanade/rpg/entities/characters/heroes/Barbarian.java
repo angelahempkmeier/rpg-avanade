@@ -20,7 +20,7 @@ public class Barbarian extends Character {
     private CharacterClass characterClass = CharacterClass.BARBARIAN;
 
     public Barbarian(String name){
-        super(null, 21, 10, 2, 5, 2, 8);
+        super(null, 21, 10, 2, 5, 2, 8,21);
         this.name = name;
     }
 
@@ -55,6 +55,11 @@ public class Barbarian extends Character {
     @Override
     public String getName() {
         return this.name;
+    }
+
+    @Override
+    public void setName(String name){
+        this.name = name;
     }
 
     @Override

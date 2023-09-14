@@ -1,12 +1,19 @@
 package com.avanade.rpg.entities;
 
+import com.avanade.rpg.dto.history.BattleHistoryResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class BattleHistory {
@@ -14,11 +21,13 @@ public class BattleHistory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
-    private Character player;
-    @OneToOne
-    private Character opponent;
-    @OneToOne
-    private Character initialPlayer;
-
-
+    private Game game;
+    public BattleHistoryResponseDTO toResponseDTO(){
+        return new BattleHistoryResponseDTO(
+                this.id,
+                this.game.toGameHistoryResponseDTO(),
+                this.game.getTurnBattles().stream().map(TurnBattle::turnBattleHistoryResponseDTO).collect(Collectors.toList()),
+                this.game.getWinner()
+        );
+    }
 }

@@ -19,7 +19,7 @@ public class Orc extends Character {
     private CharacterClass characterClass = CharacterClass.ORC;
 
     public Orc(String name){
-        super(null, 42, 7, 1, 2, 3, 4);
+        super(null, 42, 7, 1, 2, 3, 4,42);
         this.name = name;
     }
 
@@ -44,6 +44,10 @@ public class Orc extends Character {
     @Override
     public String getName() {
         return this.name;
+    }
+    @Override
+    public void setName(String name){
+        this.name = name;
     }
     @Override
     public String getType() {

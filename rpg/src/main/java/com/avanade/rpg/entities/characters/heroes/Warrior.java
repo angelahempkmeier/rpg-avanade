@@ -19,7 +19,7 @@ public class Warrior extends Character {
     private String name;
     private CharacterClass characterClass = CharacterClass.WARRIOR;
     public Warrior(String name){
-        super(null, 20, 7, 5, 6, 1, 12);
+        super(null, 20, 7, 5, 6, 1, 12,20);
         this.name = name;
     }
 
@@ -49,6 +49,10 @@ public class Warrior extends Character {
     @Override
     public String getName() {
         return this.name;
+    }
+    @Override
+    public void setName(String name){
+        this.name = name;
     }
     @Override
     public String getType() {

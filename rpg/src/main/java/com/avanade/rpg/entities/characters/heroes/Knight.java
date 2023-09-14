@@ -20,7 +20,7 @@ public class Knight extends Character {
     private CharacterClass characterClass = CharacterClass.KNIGHT;
 
     public Knight(String name){
-        super(null, 26, 6, 8, 3, 2, 6);
+        super(null, 26, 6, 8, 3, 2, 6,26);
         this.name = name;
     }
 
@@ -44,6 +44,10 @@ public class Knight extends Character {
     @Override
     public String getName() {
         return this.name;
+    }
+    @Override
+    public void setName(String name){
+        this.name = name;
     }
 
     @Override

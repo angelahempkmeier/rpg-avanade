@@ -18,7 +18,7 @@ public class Werewolf extends Character {
     private String name;
     private CharacterClass characterClass = CharacterClass.WEREWOLF;
     public Werewolf(String name) {
-        super(null, 34, 7, 4, 7, 2, 4);
+        super(null, 34, 7, 4, 7, 2, 4,34);
         this.name = name;
     }
 
@@ -43,6 +43,10 @@ public class Werewolf extends Character {
     @Override
     public String getName() {
         return this.name;
+    }
+    @Override
+    public void setName(String name){
+        this.name = name;
     }
     @Override
     public String getType() {
