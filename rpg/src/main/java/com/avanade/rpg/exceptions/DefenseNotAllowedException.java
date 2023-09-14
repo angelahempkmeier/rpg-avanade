@@ -1,4 +1,4 @@
-package com.avanade.rpg.handler;
+package com.avanade.rpg.exceptions;
 
 public class DefenseNotAllowedException extends RuntimeException {
 
