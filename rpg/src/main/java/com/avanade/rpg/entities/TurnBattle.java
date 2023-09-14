@@ -1,13 +1,18 @@
 package com.avanade.rpg.entities;
 
+import com.avanade.rpg.dto.history.TurnBattleHistoryResponseDTO;
+import com.avanade.rpg.dto.turnbattle.TurnBattleDTO;
 import com.avanade.rpg.enums.TurnStatus;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class TurnBattle {
@@ -27,8 +32,33 @@ public class TurnBattle {
     @Enumerated(EnumType.STRING)
     private TurnStatus status;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "game_id")
     private Game game;
+
+    public TurnBattleDTO toTurnBattleDTO(){
+        return new TurnBattleDTO(
+                this.id,
+                this.attacker,
+                this.defender,
+                this.turn,
+                this.attack,
+                this.defense,
+                this.damage,
+                this.status
+        );
+    }
+
+    public TurnBattleHistoryResponseDTO turnBattleHistoryResponseDTO(){
+        return new TurnBattleHistoryResponseDTO(
+                this.turn,
+                this.attacker.getName(),
+                this.attack,
+                this.defender.getName(),
+                this.defense,
+                this.damage
+        );
+    }
 
 }

@@ -4,8 +4,10 @@ import com.avanade.rpg.dto.history.GameHistoryResponseDTO;
 import com.avanade.rpg.enums.GameStatus;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +21,11 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "player_id")
     private Character player;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "opponent_id")
     private Character opponent;
     private Boolean playerInitiated;
     @JsonManagedReference
@@ -32,6 +36,7 @@ public class Game {
     private BattleHistory battleHistory;
     @Enumerated(EnumType.STRING)
     private GameStatus gameStatus;
+    private String winner;
 
     public void setTurnBattles(TurnBattle turnBattle) {
         turnBattles.add(turnBattle);

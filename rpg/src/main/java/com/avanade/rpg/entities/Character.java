@@ -4,6 +4,7 @@ import com.avanade.rpg.dto.characters.CharacterRequestDTO;
 import com.avanade.rpg.dto.characters.CharacterResponseDTO;
 import com.avanade.rpg.dto.history.CharacterHistoryDTO;
 import com.avanade.rpg.strategy.CharacterBattle;
+import com.avanade.rpg.utils.MatchingEnum;
 import com.avanade.rpg.utils.RollingDice;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -38,8 +39,8 @@ public class Character implements CharacterBattle {
         return new CharacterResponseDTO(
                 this.id,
                 requestDTO.name(),
-                requestDTO.type(),
-                requestDTO.characterClass(),
+                MatchingEnum.getEnumType(requestDTO.type()),
+                MatchingEnum.getEnumClass(requestDTO.characterClass()),
                 this.life,
                 this.strength,
                 this.defense,
@@ -52,6 +53,9 @@ public class Character implements CharacterBattle {
     public CharacterResponseDTO characterResponseDTO(){
         return new CharacterResponseDTO(
                 this.id,
+                getName(),
+                MatchingEnum.getEnumType(getType()),
+                MatchingEnum.getEnumClass(getCharClass()),
                 this.life,
                 this.strength,
                 this.defense,

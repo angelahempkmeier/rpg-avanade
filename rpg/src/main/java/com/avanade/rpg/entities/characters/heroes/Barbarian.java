@@ -6,6 +6,8 @@ import com.avanade.rpg.entities.Character;
 import com.avanade.rpg.enums.CharacterClass;
 import com.avanade.rpg.enums.CharacterType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +18,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Barbarian extends Character {
+    @NotNull @NotBlank
     private String name;
+    @NotNull @NotBlank
     private CharacterClass characterClass = CharacterClass.BARBARIAN;
 
     public Barbarian(String name){

@@ -6,6 +6,8 @@ import com.avanade.rpg.entities.Character;
 import com.avanade.rpg.enums.CharacterClass;
 import com.avanade.rpg.enums.CharacterType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @DiscriminatorValue("warrior")
 public class Warrior extends Character {
+    @NotNull @NotBlank
     private String name;
     private CharacterClass characterClass = CharacterClass.WARRIOR;
     public Warrior(String name){
