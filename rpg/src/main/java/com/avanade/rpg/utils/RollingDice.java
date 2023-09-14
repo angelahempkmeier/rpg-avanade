@@ -1,7 +1,5 @@
 package com.avanade.rpg.utils;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Random;
 
 public class RollingDice {
@@ -14,7 +12,4 @@ public class RollingDice {
         Random random = new Random();
         return random.nextInt(12) + 1;
     }
-
-
-
 }

@@ -38,6 +38,4 @@ public class CharacterConversionService {
         }
         return null;
     }
-
-
 }
