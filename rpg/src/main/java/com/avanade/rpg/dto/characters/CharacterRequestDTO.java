@@ -1,17 +1,12 @@
 package com.avanade.rpg.dto.characters;
 
-import com.avanade.rpg.enums.CharacterClass;
-import com.avanade.rpg.enums.CharacterType;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-public record CharacterRequestDTO(String name,
-                                  @Enumerated(EnumType.STRING)
-                                  CharacterType type,
-                                  @Enumerated(EnumType.STRING)
-                                  CharacterClass characterClass) {
-
-//TODO se é um guerreiro, é um HERO
-//TODO mudar de String pra CharacterClass
-
+public record CharacterRequestDTO(@NotNull @NotBlank
+                                  String name,
+                                  @NotNull @NotBlank
+                                  String type,
+                                  @NotNull @NotBlank
+                                  String characterClass) {
 }
