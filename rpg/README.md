@@ -1,17 +1,26 @@
 # Projeto RPG - API Rest com Java SpringBoot e Postgres
 
 ## Sumário
+- [Descrição do Jogo](#description)
+- [Informações sobre o jogo e suas regras](#game-rules)
+- [Fluxo do jogo](#game-flow)
+- [Informações sobre o desenvolvimento](#dev-infos)
+- [Próximos passos](#next-steps)
 
-## Descrição do Jogo
+
+## Descrição do Jogo 
+
+
 Esse é um RPG de batalhas por turno. Nesse jogo, os jogadores podem escolher entre heróis e monstros, cada um com suas particularidade: o que faz necessário refletir bastante sobre qual tipo de personagem será escolhido!
 
 O objetivo do jogo é, basicamente, reduzir os Pontos de Vida do oponente a zero, para, dessa forma, alcançar a vitória!
 
 A dinâmica do jogo consiste em lançar dados para determinar o andamento do mesmo, desde a escolha do jogador que tomará a iniciativa, até o cálculo de ataque, defesa e dano.
-
+<a id="description"></a>
 Para jogar, você precisa interagir com os endpoints da aplicação, que serão explicados detalhadamente nesse documento.
 
 ## Informações sobre o jogo e suas regras
+<a id="game-rules"></a>
 
 ### Personagens disponíveis:
 
@@ -65,6 +74,8 @@ Para o cálculo, basta diminuir o total de dano dos pontos de vida do jogador qu
 - O jogo termina assim que algum personagem ficar com seus Pontos de Vida iguais ou menores que zero.
 
 ## Fluxo do Jogo
+<a id="game-flow"></a>
+
 ![Fluxograma](src/main/resources/static/images/flowchart.drawio.png)
 
 ## Como Jogar
@@ -152,6 +163,8 @@ sucessivamente...
 
 
 ## Informações sobre o desenvolvimento
+
+<a id="dev-infos"></a>
 
 ### Tecnologias:
 - Java 17 com Spring Boot;
@@ -999,7 +1012,9 @@ Caso haja a tentativa de calcular o dano sem a partida estar iniciada e as fases
 }
 ```
 
-### Próximos Passos
+## Próximos Passos
+
+<a id="next-steps"></a>
 - Implementação da desistência do jogo, assim o vencedor ganha por WO
 - Possibilidade da retomada de um jogo que não foi finalizado
 - Continuação da implementação de testes
