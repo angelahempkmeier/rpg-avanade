@@ -105,7 +105,7 @@ public class GameService {
                     endTurn();
                 }
             }else{
-                throw new NotYourTurnToDefenseException(defender.id());
+                throw new NotYourTurnToDefenseException("Ops! Not allowed.");
             }
         }else{
             throw new DefenseNotAllowedException("First you have to attack, after that, you'll be able to defend yourself.");
