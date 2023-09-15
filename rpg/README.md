@@ -204,8 +204,8 @@ sucessivamente...
 | Atributo       | Tipo   | Obrigatório | Descrição | Valores aceitos                                                       |
   |----------------|--------|-------------|---------|-----------------------------------------------------------------------|
 | name           | String | Sim         | Nome do personagem | Qualquer String                                                       |
-| type           | Enum   | Sim         | Tipo do Personagem | hero, monster                                                         |
-| characterClass | Enum   | Sim         | Classe do Personagem | Se HERO: warrior, barbarian, knight. Se MONSTER: orc, giant, werewolf |
+| type           | String | Sim         | Tipo do Personagem | hero, monster                                                         |
+| characterClass | String | Sim         | Classe do Personagem | Se HERO: warrior, barbarian, knight. Se MONSTER: orc, giant, werewolf |
 
 **Request**
 <br>
@@ -273,7 +273,7 @@ Se não houver a classe de personagem solicitado
 
 | Atributo       | Tipo   | Obrigatório | Descrição | Valores aceitos                                                       |
   |----------------|--------|-------------|---------|-----------------------------------------------------------------------|
-| name           | String | ???         | Nome do personagem | Qualquer String                                                       |
+| name           | String | Sim         | Nome do personagem | Qualquer String                                                       |
 Request
 
 ````json
@@ -444,7 +444,7 @@ Response
 
 | Atributo       | Tipo | Obrigatório | Descrição            |
   |----------------|------|-------------|----------------------|
-| player         | Long | ?????       | Id do player         |
+| player         | Long | Sim         | Id do player         |
 | opponent       | Long | Não         | Id do opponent       | 
 
 **Request**
@@ -535,7 +535,7 @@ Caso um jogador tente jogar contra si próprio
 
 | Atributo | Tipo | Obrigatório | Descrição      |
   |----------|------|-------------|----------------|
-| id       | Long | ?????       | Id do atacante |
+| id       | Long | Sim         | Id do atacante |
 
 **Request**
 <br>
@@ -607,7 +607,7 @@ Caso o turno não tenha começado ainda
 
 | Atributo | Tipo | Obrigatório | Descrição      |
   |----------|------|-------------|----------------|
-| id       | Long | ?????       | Id do defensor |
+| id       | Long | Sim         | Id do defensor |
 
 **Request**
 <br>
